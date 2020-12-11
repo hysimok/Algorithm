@@ -4,8 +4,8 @@
 
 int main()
 {
-	List list;
-	NameCard *pcard;
+	List list;				//구조체 포인터주소가 저장될 리스트
+	NameCard *pcard;		//NameCard 구조체 하나를 가리키는 포인터변수
 
 	ListInit(&list);
 
