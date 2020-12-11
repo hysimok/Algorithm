@@ -5,9 +5,11 @@
 #define FALSE	0
 
 #include <stdio.h>
-/*** ArrayList�� ���� ****/
+
+/*** ArrayList의 정의 ****/
 #define LIST_LEN	100
-typedef int LData;
+//구조체를 변경하지 않고 이 행만 변경해도 구조체에 담을 데이터의 자료형을 쉽게 바꿀 수 있다.
+typedef int LData;				
 
 typedef struct __ArrayList
 {
@@ -17,7 +19,7 @@ typedef struct __ArrayList
 } ArrayList;
 
 
-/*** ArrayList�� ���õ� ����� ****/
+/*** ArrayList와 관련된 연산들 ****/
 typedef ArrayList List;
 
 void ListInit(List * plist);

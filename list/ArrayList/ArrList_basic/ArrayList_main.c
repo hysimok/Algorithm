@@ -8,14 +8,18 @@ int	main()
 	int		sum = 0;
 
 	i = 0;
+	
+	//리스트 초기화
 	ListInit(&list);
-
+	
+	//정수 1부터 9까지 리스트에 저장
 	while (i < 9)
 	{
 		LInsert(&list, i + 1);
 		i++;
 	}
 
+	//리스트에 저장된 값을 순차적으로 참조하여 그 합을 계산
 	if (LFirst(&list, &data))
 	{
 		sum += data;
