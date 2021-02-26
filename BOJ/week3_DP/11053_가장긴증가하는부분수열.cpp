@@ -1,9 +1,8 @@
-#include<iostream>
-#include<algorithm>
+#include <iostream>
+#include <algorithm>
 
 using namespace std;
 
-int n, ans;
 int	dp[1001];
 int arr[1001];
 
