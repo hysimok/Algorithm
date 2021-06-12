@@ -40,6 +40,8 @@ int LNext(List * plist, LData * pdata)
 	return TRUE;
 }
 
+// 멤버변수 curPosition 을 확인해서 조회가 이루어진 값의 위치를 확인하고 삭제.
+// 중간에 데이터가 삭제되었으므로, 이후의 데이터를 한 칸씩 앞으로 이동시킨다.
 LData LRemove(List * plist)
 {
 	int rpos = plist->curPosition;
