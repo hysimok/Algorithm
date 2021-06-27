@@ -19,7 +19,7 @@ void	LInsert(List *plist, LData data)
 		FInsert(plist, data);
 	// 정렬 기준이 마련되었다면, 정렬 기준에 근거하여 노드 추가
 	else
-		SInsert(plist, data);	
+		SInsert(plist, data);
 }
 
 void	FInsert(List *plist, LData data)
