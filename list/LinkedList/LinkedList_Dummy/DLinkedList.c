@@ -14,10 +14,12 @@ void	ListInit(List *plist)
 
 void	LInsert(List *plist, LData data)
 {
+	// 정렬 기준이 마련되지 않았다면 머리에 노드 추가
 	if (plist->comp == NULL)
 		FInsert(plist, data);
-	// else
-	// 	SInsert(plist, data);	
+	// 정렬 기준이 마련되었다면, 정렬 기준에 근거하여 노드 추가
+	else
+		SInsert(plist, data);	
 }
 
 void	FInsert(List *plist, LData data)
@@ -29,6 +31,25 @@ void	FInsert(List *plist, LData data)
 	plist->head->next = newNode;
 
 	plist->numOfData++;
+}
+
+void	SInsert(List *plist, LData data)
+{
+	Node *newNode = (Node *)malloc(sizeof(Node));		// 새 노드의 생성
+	Node *pred = plist->head;							// pred는 plist의 더미 노드를 기리킴
+	newNode->data = data;								// 새 노드에 데이터 저장
+
+	// 새 노드가 들어갈 위치를 찾기 위한 반복문!
+	// 반복문을 탈출하면 pred 가 가리키는 노드의 오른쪽에 새 노드가 추가된다.
+	while (pred->next != NULL && plist->comp(data, pred->next->data) != 0)
+	{
+		pred = pred->next;
+	}
+
+	newNode->next = pred->next;							// 새 노드의 오른쪽을 연결
+	pred->next = newNode;								// 새 노드의 왼쪽을 연결
+
+	(plist->numOfData)++;
 }
 
 int		LFirst(List *plist, LData *pdata)
@@ -77,5 +98,10 @@ LData 	LRemove(List *plist)
 int		LCount(List *plist)
 {
 	return plist->numOfData;
+}
+
+void	SetSortRule(List *plist, int (*comp)(LData d1, LData d2))
+{
+	plist->comp = comp;
 }
 

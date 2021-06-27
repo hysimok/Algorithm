@@ -47,7 +47,7 @@ int main(void)
 
 	/**** 데이터의 조회 ****/
 	printf("입력받은 데이터의 전체출력! \n");
-	if(head == NULL) 
+	if(head->next == NULL) 
 	{
 		printf("저장된 자연수가 존재하지 않습니다. \n");
 	}
