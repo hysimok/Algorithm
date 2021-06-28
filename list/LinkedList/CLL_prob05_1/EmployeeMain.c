@@ -36,33 +36,39 @@ int main(){
 	Employee	*pemp;
 	Employee	*data;
 
-	int			i;
+	int			i, nodeNum;
 
 	List		list;
 	ListInit(&list);
 
 	pemp = (Employee *)malloc(sizeof(Employee));
 	pemp->emp_num = 1;
+	pemp->name = (char *)malloc(sizeof("HYEYOON") + 1);
+	// pemp->name = "HYEYOON";
 	strcpy(pemp->name, "HYEYOON");
 	LInsert(&list, pemp);
 
 	pemp = (Employee *)malloc(sizeof(Employee));
 	pemp->emp_num = 2;
+	pemp->name = (char *)malloc(sizeof("BONGSOON") + 1);
 	strcpy(pemp->name, "BONGSOON");
 	LInsert(&list, pemp);
 
 	pemp = (Employee *)malloc(sizeof(Employee));
 	pemp->emp_num = 3;
+	pemp->name = (char *)malloc(sizeof("MUJI") + 1);
 	strcpy(pemp->name, "MUJI");
 	LInsert(&list, pemp);
 
 	pemp = (Employee *)malloc(sizeof(Employee));
 	pemp->emp_num = 4;
+	pemp->name = (char *)malloc(sizeof("JORDI") + 1);
 	strcpy(pemp->name, "JORDI");
 	LInsert(&list, pemp);
 
 	pemp = (Employee *)malloc(sizeof(Employee));
 	pemp->emp_num = 5;
+	pemp->name = (char *)malloc(sizeof("APEACH") + 1);
 	strcpy(pemp->name, "APEACH");
 	LInsert(&list, pemp);
 
@@ -84,5 +90,23 @@ int main(){
 	pemp = WhosNightDuty(&list, "HYEYOON", 3);
 	printf("HYEYOON님 3일 뒤 근무자는 : %d %s입니다\n", pemp->emp_num, pemp->name);
 
+	// 사번이 5인 사원 삭제
+	nodeNum = LCount(&list);
+	if(LFirst(&list, &data))
+	{
+		if (data->emp_num == 5)
+			data = LRemove(&list);
+		
+		for (i = 0; i < LCount(&list) - 1; i++)
+		{
+			if (LNext(&list, &data))
+			{
+				if (data->emp_num == 5)
+					data = LRemove(&list);
+			}
+		}
+		free(data->name);
+	}
+	while(1);
 	return 0;
 }

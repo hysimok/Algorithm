@@ -4,7 +4,7 @@
 typedef struct s_employee
 {
 	int		emp_num;
-	char	name[30];
+	char	*name;
 }				Employee;
 
 #endif

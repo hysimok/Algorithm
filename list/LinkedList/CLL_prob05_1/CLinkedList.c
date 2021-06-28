@@ -90,7 +90,7 @@ Data LRemove(List *plist)
 
 	plist->before->next = plist->cur->next;
 	plist->cur = plist->before;
-
+	// free(rdata->name);
 	free(rpos);
 	plist->numOfData--;
 	return rdata;
