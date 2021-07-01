@@ -27,17 +27,17 @@ void LInsert(List *plist, Data data)
 
 int LFirst(List *plist, Data *pdata)
 {
-	if(plist->head == NULL)
+	if(plist->head == plist->tail)
 		return FALSE;
 	
-	plist->cur = plist->head;
+	plist->cur = plist->head->next;
 	*pdata = plist->cur->data;
 	return TRUE;
 }
 
 int LNext(List *plist, Data *pdata)
 {
-	if (plist->cur->next == NULL)
+	if (plist->cur->next == plist->tail)
 		return FALSE;
 	
 	plist->cur = plist->cur->next;
@@ -47,7 +47,7 @@ int LNext(List *plist, Data *pdata)
 
 int LPrevious(List *plist, Data *pdata)
 {
-	if (plist->cur->prev == NULL)
+	if (plist->cur->prev == plist->head)
 		return FALSE;
 
 	plist->cur = plist->cur->prev;
@@ -55,3 +55,22 @@ int LPrevious(List *plist, Data *pdata)
 	return TRUE;
 }
 
+Data LRemove(List *plist)
+{
+	Node *rpos = plist->cur;
+	Data rdata = rpos->data;
+
+	plist->cur->prev->next = plist->cur->next;
+	plist->cur->next->prev = plist->cur->prev;
+
+	plist->cur = plist->cur->prev;
+
+	free(rpos);
+	(plist->numOfData)--;
+	return rdata;
+}
+
+int LCount(List *plist)
+{
+	return (plist->numOfData);
+}

@@ -27,5 +27,29 @@ int main(void)
 		printf("\n\n");
 	}
 
+	//2의 배수 데이터 삭제
+	if(LFirst(&list, &data))
+	{
+		if(data % 2 == 0)
+			LRemove(&list);
+
+		while(LNext(&list, &data)) 
+		{		
+			if(data % 2 == 0)
+				LRemove(&list);
+		}
+	}
+
+	// 저장된 데이터의 재 조회 ///////
+	if(LFirst(&list, &data))
+	{
+		printf("%d ", data);
+
+		while(LNext(&list, &data)) 
+			printf("%d ", data);
+		
+		printf("\n\n");
+	}
+
 	return 0;
 }

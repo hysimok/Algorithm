@@ -2,9 +2,10 @@
 #define __DB_LINKED_LIST_H__
 
 #define TRUE	1
-#define FALSE	2
+#define FALSE	0
 
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef int Data;
 
